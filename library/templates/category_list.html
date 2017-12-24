@@ -1,0 +1,14 @@
+{% extends parent_template|default:"base_library.html" %}
+{% block title %}
+{{ block.super }} - Categories
+{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="list-group">  
+    {% for cat in object_list %}
+       <a href="{{ cat.get_absolute_url }}" class="list-group-item">
+        {{ cat.name }} </a> 
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

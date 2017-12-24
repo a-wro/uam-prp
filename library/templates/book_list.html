@@ -1,0 +1,28 @@
+{% extends parent_template|default:"base_library.html" %}
+{% block title %}
+{{ block.super }} - Books
+{% endblock %}
+
+{% block content %}
+
+{% for b in object_list %}
+  <div class="card">
+      <img class="card-img-top" src="https://www.petmd.com/sites/default/files/petmd-cat-happy-10.jpg" style="width:70%">
+       <div class="card-block">
+         <a href="{{ b.get_absolute_url }}"  >
+         <h4>{{ b.title }}</h4> </a>
+         <h4>
+             {{ b.price }}
+         </h4>
+         <p>
+             {{ b.printCategories }}
+         </p>
+        
+     </div>
+ </div>	
+ {% endfor %}
+
+{% endblock %}
+
+
+ 	

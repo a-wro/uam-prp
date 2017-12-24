@@ -1,0 +1,19 @@
+{% extends parent_template|default:"base_library.html" %}
+
+{% block title %}
+{{ block.super }} - {{ book.title }}
+{% endblock %}
+{% block content %}
+<img class="card-img-top" src="https://www.petmd.com/sites/default/files/petmd-cat-happy-10.jpg" style="width:30%">
+<h4> {{ book.title }}</h4>
+<h4>{{ book.printCategories }}</h4>
+
+{{ book.description }}
+
+  <a href="{{ book.get_update_url }}">
+      Edit </a> 
+       <a href="{{ book.get_delete_url }}">
+      Delete </a> 
+
+{% endblock %}
+

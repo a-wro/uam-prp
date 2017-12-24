@@ -1,0 +1,16 @@
+{% extends parent_template|default:"base_library.html" %}
+{% block content %}
+ <div>
+       <form
+           action="{% url 'library_delete_book' %}"
+           method="post">
+         {% csrf_token %}
+         <p> Are you sure you want to delete book {{ book.title }}?</p>
+         <a href="{{ book.get_absolute_url }}">
+          Cancel </a>
+         <button type="submit">
+           Delete Book</button>
+       </form>
+     </div>
+{% endblock %}
+

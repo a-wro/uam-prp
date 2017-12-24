@@ -1,0 +1,18 @@
+{% extends parent_template|default:"base_library.html" %}
+{% load bootstrap %}
+
+{% block title %}
+{{ block.super }} - Update {{ book.title }}
+{% endblock %}
+{% block content %}
+  <div class="container">
+      <form
+          action="{{ book.get_update_url }}"
+          method="post">
+        {% csrf_token %}  
+        {{ form|bootstrap }}
+       <button class="btn btn-primary" style="width:50%">Submit</button>
+      </form>
+    </div>
+
+{% endblock %}
