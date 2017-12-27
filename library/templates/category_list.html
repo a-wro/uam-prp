@@ -7,7 +7,7 @@
   <div class="list-group">  
     {% for cat in object_list %}
        <a href="{{ cat.get_absolute_url }}" class="list-group-item">
-        {{ cat.name }} </a> 
+        {{ cat.name.title }} </a> 
     {% endfor %}
   </div>
 </div>

@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import include, url
 import library.urls as library_urls
+from user import urls as user_urls
 from .views import redirect_root
 from library.views import json
 
@@ -28,14 +29,9 @@ urlpatterns = [
   url(r'^library/', include(library_urls)),
   url(r'^admin/', admin.site.urls),
   url(r'^index/$', json),
+  url(r'^user/', include(user_urls, namespace='dj-auth')),
+  
 
-  url(r'^login/$', auth_views.login,
-      {'template_name': 'login.html'},
-      name='login'),
-  url(r'^logout/$', auth_views.logout,
-      {'template_name': 'logged_out.html',
-        'extra_context': {'form': AuthenticationForm}},
-        name='logout'),
 
 ]
 

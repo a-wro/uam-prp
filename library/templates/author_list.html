@@ -1,0 +1,18 @@
+{% extends parent_template|default:"base_library.html" %}
+{% block title %}
+{{ block.super }} - Authors
+{% endblock %}
+{% load static %}
+{% block content %}
+{% for a in object_list %}
+<div class="card">
+   <a href="{{ a.get_absolute_url }}" >
+      <img class="card-img-top" src="{% static a.get_img_path %}" style="width:200px; height:250px">
+      <div class="card-block"  style="padding:8px;">
+         {{ a.fullName }}
+   </a>
+   </h4>
+   </div>
+</div>
+{% endfor %}
+{% endblock %}

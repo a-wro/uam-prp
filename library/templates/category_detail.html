@@ -2,19 +2,17 @@
 {% block title %}
 {{ block.super }} - {{ category.name }}
 {% endblock %}
-
+{% load static %}
 {% block content %}
-
-{% for b in category.book_set.all %}
-  <div class="card">
-      <img class="card-img-top" src="https://www.petmd.com/sites/default/files/petmd-cat-happy-10.jpg" style="width:70%">
-       <div class="card-block">
-         <a href="{{ b.get_absolute_url }}"  >
-         {{ b.title }} </a>
-          spam
-        
-     </div>
- </div>	
- {% endfor %}
-
+{% for book in category.book_set.all %}
+<div class="card">
+   <a href="{{ book.get_absolute_url }}" >
+      <img class="card-img-top" src="{% static book.get_img_path %}" style="width:200px; height:250px">
+      <div class="card-block"  style="padding:8px;">
+         {{ book.title }}
+   </a>
+   </h4>
+   </div>
+</div>
+{% endfor %}
 {% endblock %}

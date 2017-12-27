@@ -1,19 +1,25 @@
 {% extends parent_template|default:"base_library.html" %}
-
+{% load static %}
 {% block title %}
 {{ block.super }} - {{ book.title }}
 {% endblock %}
 {% block content %}
-<img class="card-img-top" src="https://www.petmd.com/sites/default/files/petmd-cat-happy-10.jpg" style="width:30%">
-<h4> {{ book.title }}</h4>
-<h4>{{ book.printCategories }}</h4>
-
-{{ book.description }}
-
-  <a href="{{ book.get_update_url }}">
-      Edit </a> 
-       <a href="{{ book.get_delete_url }}">
-      Delete </a> 
-
+<div class="container">
+   <div class="clearfix">
+      <img src="{% static book.get_img_path %}" style="width:200px; height:250px; float:left">
+      <div class="desc">
+         <h3> {{ book.title }}</h3>
+         <p> Author: {{ book.printAuthors }} </p>
+         <p> Categories: {{ book.printCategories }} </p>
+         <p> Price: {{ book.price }}</p>
+         <p> Pages: {{ book.pages }}</p>
+      </div>
+   </div>
+         
+    <div class="desc"> <a href="{{ book.get_update_url }}"> Edit</a> </div>
+              
+   <div class="desc">
+      {{ book.description }} 
+   </div>
+</div>
 {% endblock %}
-

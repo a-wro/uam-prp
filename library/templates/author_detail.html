@@ -1,0 +1,35 @@
+{% extends parent_template|default:"base_library.html" %}
+{% load static %}
+{% block title %}
+{{ block.super }} - {{ author.fullName }}
+{% endblock %}
+{% block content %}
+<div class="container">
+   <div class="clearfix">
+      <img src="{% static author.get_img_path %}" style="width:200px; height:250px; float:left">
+      <div class="desc">
+         <h3> {{ author.fullName }}</h3>
+         <p> From: {{ author.From.name }} </p>
+         <p> Born: {{ author.born }} </p>
+         <p> Website: {{ author.url }}</p>
+         <p> Genres: {{ author.genres }}</p>
+      </div>
+</div>
+   <div class="desc"> <a href="{{ author.get_update_url }}"> Edit</a> </div>
+   
+   <div class="desc">
+      {{ author.info }} 
+   </div>
+   
+<div class="container">
+   {{ author.fullName }}'s books:    
+   {% for book in author.book_set.all %}
+   <div class="list-group">  
+      <a href="{{ book.get_absolute_url }}" class="list-group-item">
+      {{ book.title }} </a> 
+      {% endfor %}
+   </div>
+</div>
+
+</div>
+{% endblock %}
